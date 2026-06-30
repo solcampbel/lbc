@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscription — Famille</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0D0D0D;--gold:#B8963E;--gold2:#D4AF62;--cream:#F7F3EC;--muted:#7A7060;--border:rgba(184,150,62,0.22);--border-strong:rgba(184,150,62,0.45);--white:#FDFAF5}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;position:relative;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 10% 0%,rgba(184,150,62,.08) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 90% 100%,rgba(184,150,62,.06) 0%,transparent 60%);pointer-events:none;z-index:0}
+.page-wrap{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:0 1.5rem 4rem}
+header{text-align:center;padding:3rem 0 2.5rem;animation:fadeDown .7s ease both}
+.header-crest{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border:1.5px solid var(--gold);border-radius:50%;margin-bottom:1.25rem;position:relative}
+.header-crest::before{content:'';position:absolute;inset:5px;border:.5px solid var(--border);border-radius:50%}
+.header-crest svg{width:28px;height:28px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,6vw,3rem);font-weight:600;line-height:1.1}
+h1 em{font-style:italic;color:var(--gold)}
+.header-sub{font-size:14px;color:var(--muted);margin-top:.75rem;font-weight:300}
+.ornament{display:flex;align-items:center;gap:1rem;margin:1.75rem auto 0;max-width:260px}
+.ornament-line{flex:1;height:.5px;background:var(--border-strong)}
+.ornament-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg)}
+.db-banner{background:var(--white);border:.5px solid var(--border);border-radius:2px;padding:.875rem 1.25rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:.75rem;font-size:12px;color:var(--muted)}
+.db-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.db-dot.ok{background:#2D7A5E}.db-dot.err{background:#C0392B}.db-dot.wait{background:var(--gold);animation:pulse .8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.form-card{background:var(--white);border:.5px solid var(--border);border-radius:2px;padding:2.5rem;animation:fadeUp .7s .2s ease both;position:relative}
+.form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.section-label{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.25rem;display:flex;align-items:center;gap:.75rem}
+.section-label::after{content:'';flex:1;height:.5px;background:var(--border)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.75rem}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+label{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+label .req{color:var(--gold);margin-left:2px}
+input,textarea,select{font-family:'Jost',sans-serif;font-size:14px;font-weight:300;padding:11px 14px;border:.5px solid var(--border-strong);border-radius:2px;background:var(--cream);color:var(--ink);outline:none;transition:all .2s;width:100%}
+input::placeholder,textarea::placeholder{color:#B8AD9A}
+input:focus,textarea:focus,select:focus{border-color:var(--gold);background:var(--white);box-shadow:0 0 0 3px rgba(184,150,62,.08)}
+textarea{resize:vertical;min-height:88px}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A7060' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
+.upload-zone{border:.5px dashed var(--gold2);border-radius:2px;padding:1.5rem;text-align:center;cursor:pointer;background:rgba(184,150,62,.03);transition:all .2s}
+.upload-zone:hover{background:rgba(184,150,62,.07);border-color:var(--gold)}
+.upload-zone input{display:none}
+.upload-icon{width:40px;height:40px;border:.5px solid var(--border-strong);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;color:var(--gold)}
+.upload-icon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5}
+.upload-text{font-size:13px;color:var(--muted);line-height:1.5}
+.upload-text strong{display:block;color:var(--ink);font-weight:400;margin-bottom:2px}
+#cv-name-display{margin-top:.625rem;font-size:12px;color:var(--gold);font-style:italic;display:none}
+.btn-submit{width:100%;padding:15px;background:var(--ink);color:var(--cream);border:1px solid var(--ink);border-radius:2px;font-family:'Jost',sans-serif;font-size:13px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;margin-top:2rem;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;transition:border-color .2s}
+.btn-submit::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.btn-submit:hover:not(:disabled)::before{transform:scaleX(1)}
+.btn-submit>*{position:relative;z-index:1}
+.btn-submit:hover:not(:disabled){border-color:var(--gold)}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed}
+.spinner{width:16px;height:16px;border:2px solid rgba(253,250,245,.3);border-top-color:var(--cream);border-radius:50%;animation:spin .7s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.alert{display:none;margin-top:1rem;padding:12px 16px;border-radius:2px;font-size:13px;border-left:3px solid}
+.alert.success{background:#F0F9F5;border-color:#2D7A5E;color:#1A5040}
+.alert.error{background:#FDF2F2;border-color:#C0392B;color:#8B1A1A}
+.footer-nav{text-align:center;margin-top:2rem;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.footer-nav a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;border-bottom:.5px solid var(--border-strong);padding-bottom:2px;transition:color .2s}
+.footer-nav a:hover{color:var(--gold)}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media(max-width:520px){.form-grid{grid-template-columns:1fr}.field.full{grid-column:1}.form-card{padding:1.5rem 1.25rem}}
+</style>
+</head>
+<body>
+<script src="registre.js"></script>
+<div class="page-wrap">
+  <header>
+    <div class="header-crest"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+    <p class="eyebrow">Portail familial</p>
+    <h1>Rejoindre la <em>Famille</em></h1>
+    <p class="header-sub">Inscription enregistrée dans la base de données</p>
+    <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+  </header>
+  <div class="db-banner"><div class="db-dot wait" id="db-dot"></div><div id="db-text">Connexion à la base de données…</div></div>
+  <div class="form-card">
+    <p class="section-label">Identité</p>
+    <div class="form-grid">
+      <div class="field"><label>Prénom <span class="req">*</span></label><input id="f-prenom" type="text" placeholder="Jean"></div>
+      <div class="field"><label>Nom <span class="req">*</span></label><input id="f-nom" type="text" placeholder="DUPONT"></div>
+      <div class="field"><label>Âge <span class="req">*</span></label><input id="f-age" type="number" placeholder="30" min="1" max="120"></div>
+      <div class="field"><label>Téléphone <span class="req">*</span></label><input id="f-tel" type="tel" placeholder="+225 07 00 00 00"></div>
+      <div class="field full"><label>Lieu d'habitation <span class="req">*</span></label><input id="f-lieu" type="text" placeholder="Abidjan, Cocody"></div>
+      <div class="field full"><label>Profession <span class="req">*</span></label><input id="f-prof" type="text" placeholder="Ingénieur, Médecin…"></div>
+      <div class="field full"><label>Niveau d'étude</label>
+        <select id="f-niveau">
+          <option value="">— Sélectionnez votre niveau —</option>
+          <optgroup label="Primaire / Secondaire"><option>Aucun diplôme</option><option>Primaire (CEPE)</option><option>Collège (BEPC / Brevet)</option><option>Lycée - CAP / BEP</option><option>Baccalauréat</option></optgroup>
+          <optgroup label="Supérieur"><option>Bac +1 / +2 (BTS, DUT)</option><option>Bac +3 (Licence)</option><option>Bac +4 (Maîtrise / Master 1)</option><option>Bac +5 (Master 2 / Grandes Écoles)</option><option>Bac +8 (Doctorat)</option></optgroup>
+          <optgroup label="Formation"><option>Formation professionnelle / Certificat</option><option>Auto-didacte</option></optgroup>
+        </select>
+      </div>
+    </div>
+    <p class="section-label">Filiation</p>
+    <div class="form-grid" style="margin-bottom:1.75rem">
+      <div class="field"><label>Nom du père</label><input id="f-pere" type="text" placeholder="Prénom NOM"></div>
+      <div class="field"><label>Nom de la mère</label><input id="f-mere" type="text" placeholder="Prénom NOM"></div>
+    </div>
+    <p class="section-label">Compléments</p>
+    <div class="form-grid">
+      <div class="field full"><label>À propos de moi</label><textarea id="f-bio" placeholder="Parlez un peu de vous…"></textarea></div>
+      <div class="field full"><label>Curriculum Vitæ</label>
+        <div class="upload-zone" onclick="document.getElementById('f-cv').click()">
+          <div class="upload-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+          <div class="upload-text"><strong id="cv-btn-text">Déposer votre CV ici</strong>PDF, DOC, DOCX — max 5 MB</div>
+          <input type="file" id="f-cv" accept=".pdf,.doc,.docx" onchange="handleCV(this)">
+        </div>
+        <div id="cv-name-display"></div>
+      </div>
+    </div>
+    <button class="btn-submit" id="btn-submit" onclick="soumettre()">
+      <span id="submit-label">Valider mon inscription</span>
+      <div class="spinner" id="submit-spinner"></div>
+      <svg id="submit-icon" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+    <div class="alert" id="alert"></div>
+  </div>
+  <div class="footer-nav">
+    <a href="annuaire.html">Annuaire →</a>
+    <a href="donnees.html">Données →</a>
+    <a href="admin.html">Admin →</a>
+  </div>
+</div>
+<script>
+let cvData=null,cvNom='';
+async function init(){
+  const dot=document.getElementById('db-dot'),txt=document.getElementById('db-text');
+  try{const n=await Registre.compter();dot.className='db-dot ok';txt.innerHTML='<strong>Base de données connectée</strong> — '+n+' membre(s) inscrit(s)';}
+  catch(e){dot.className='db-dot err';txt.innerHTML='<strong>Erreur de connexion</strong> — vérifiez votre serveur PHP';}
+}
+function handleCV(input){
+  const f=input.files[0];if(!f)return;
+  if(f.size>5*1024*1024){alerter('Fichier trop volumineux (max 5 MB)','error');return;}
+  cvNom=f.name;const r=new FileReader();
+  r.onload=e=>{cvData=e.target.result;document.getElementById('cv-btn-text').textContent='✓ '+f.name;document.getElementById('cv-name-display').textContent=f.name;document.getElementById('cv-name-display').style.display='block';};
+  r.readAsDataURL(f);
+}
+async function soumettre(){
+  const v=id=>document.getElementById(id).value.trim();
+  setBusy(true);
+  const res=await Registre.ajouter({prenom:v('f-prenom'),nom:v('f-nom'),age:v('f-age'),telephone:v('f-tel'),lieu:v('f-lieu'),profession:v('f-prof'),niveauEtude:v('f-niveau'),pere:v('f-pere'),mere:v('f-mere'),bio:v('f-bio'),cv:cvData,cvNom});
+  setBusy(false);
+  if(!res.succes){alerter(res.erreur,'error');return;}
+  document.querySelectorAll('input:not([type=file]),textarea,select').forEach(el=>el.value='');
+  cvData=null;cvNom='';document.getElementById('cv-btn-text').textContent='Déposer votre CV ici';document.getElementById('cv-name-display').style.display='none';
+  alerter('✓ '+res.membre.prenom+' '+res.membre.nom+' a bien été inscrit(e) !','success');
+  init();
+}
+function setBusy(b){document.getElementById('btn-submit').disabled=b;document.getElementById('submit-label').textContent=b?'Enregistrement…':'Valider mon inscription';document.getElementById('submit-spinner').style.display=b?'block':'none';document.getElementById('submit-icon').style.display=b?'none':'block';}
+function alerter(msg,type){const a=document.getElementById('alert');a.innerHTML=msg;a.className='alert '+type;a.style.display='block';if(type==='success')setTimeout(()=>a.style.display='none',5000);}
+init();
+</script>
+</body>
+</html>

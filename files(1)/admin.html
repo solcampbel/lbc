@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administration — Famille</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0D0D0D;
+  --gold: #B8963E;
+  --gold2: #D4AF62;
+  --gold-light: rgba(184,150,62,0.08);
+  --cream: #F7F3EC;
+  --parchment: #EDE6D6;
+  --muted: #7A7060;
+  --border: rgba(184,150,62,0.22);
+  --border-strong: rgba(184,150,62,0.45);
+  --white: #FDFAF5;
+  --red: #C0392B;
+  --red-bg: #FDF2F2;
+  --red-border: rgba(192,57,43,0.3);
+  --green: #2D7A5E;
+  --green-bg: #F0F9F5;
+  --sidebar-w: 240px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ═══════════════════════════════
+   ÉCRAN DE CONNEXION
+═══════════════════════════════ */
+#login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: var(--ink);
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+#login-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(184,150,62,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 80% 70%, rgba(184,150,62,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.login-box {
+  background: #181410;
+  border: 0.5px solid var(--border-strong);
+  border-radius: 4px;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  text-align: center;
+}
+
+.login-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.login-crest {
+  width: 64px; height: 64px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.5rem;
+  position: relative;
+}
+
+.login-crest::before {
+  content: ''; position: absolute; inset: 5px;
+  border: 0.5px solid var(--border); border-radius: 50%;
+}
+
+.login-crest svg { width: 26px; height: 26px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+
+.login-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--gold2);
+  margin-bottom: .375rem;
+}
+
+.login-sub {
+  font-size: 12px;
+  color: #6B5F3E;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.login-field label {
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: #6B5F3E;
+  font-weight: 500;
+}
+
+.login-field input {
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 12px 16px;
+  border: 0.5px solid rgba(184,150,62,0.3);
+  border-radius: 2px;
+  background: rgba(255,255,255,0.05);
+  color: var(--gold2);
+  outline: none;
+  transition: border-color .2s;
+  letter-spacing: .05em;
+}
+
+.login-field input::placeholder { color: rgba(184,150,62,0.3); }
+.login-field input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(184,150,62,.1); }
+
+.login-error {
+  display: none;
+  font-size: 12px;
+  color: #E57373;
+  background: rgba(192,57,43,0.12);
+  border: 0.5px solid rgba(192,57,43,0.3);
+  border-radius: 2px;
+  padding: 8px 12px;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  color: var(--gold);
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .25s, color .25s;
+  margin-top: .5rem;
+}
+
+.btn-login:hover { background: var(--gold); color: var(--ink); }
+
+.login-hint {
+  margin-top: 1.5rem;
+  font-size: 11px;
+  color: rgba(184,150,62,0.4);
+  font-style: italic;
+}
+
+/* ═══════════════════════════════
+   DASHBOARD
+═══════════════════════════════ */
+#dashboard {
+  display: none;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: var(--sidebar-w);
+  background: var(--ink);
+  border-right: 0.5px solid rgba(184,150,62,0.2);
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+  overflow-y: auto;
+}
+
+.sidebar-logo {
+  padding: 1.75rem 1.5rem 1.5rem;
+  border-bottom: 0.5px solid rgba(184,150,62,0.15);
+}
+
+.sidebar-logo-icon {
+  width: 40px; height: 40px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: .875rem;
+}
+
+.sidebar-logo-icon svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+
+.sidebar-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gold2);
+  line-height: 1.2;
+}
+
+.sidebar-brand span {
+  display: block;
+  font-family: 'Jost', sans-serif;
+  font-size: 9px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #5A4E2E;
+  margin-top: 2px;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 1.25rem 0;
+}
+
+.nav-section {
+  padding: .375rem 1.5rem;
+  font-size: 9px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #4A3E20;
+  margin-bottom: .375rem;
+  margin-top: .75rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: .625rem 1.5rem;
+  font-size: 13px;
+  color: #8A7A50;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  letter-spacing: .02em;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+}
+
+.nav-item svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; flex-shrink: 0; }
+.nav-item:hover { background: rgba(184,150,62,0.06); color: var(--gold2); }
+.nav-item.active { background: rgba(184,150,62,0.1); color: var(--gold2); border-left-color: var(--gold); }
+
+.sidebar-footer {
+  padding: 1.25rem 1.5rem;
+  border-top: 0.5px solid rgba(184,150,62,0.15);
+}
+
+.admin-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #6B5F3E;
+}
+
+.admin-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.btn-logout {
+  margin-top: .875rem;
+  width: 100%;
+  padding: 8px;
+  border: 0.5px solid rgba(184,150,62,0.25);
+  border-radius: 2px;
+  background: transparent;
+  color: #6B5F3E;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .2s;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+
+.btn-logout svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+.btn-logout:hover { background: rgba(192,57,43,.15); color: #E57373; border-color: rgba(192,57,43,.3); }
+
+/* MAIN */
+.main {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+}
+
+/* TOP BAR */
+.topbar {
+  background: var(--white);
+  border-bottom: 0.5px solid var(--border);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.page-title em { font-style: italic; color: var(--gold); }
+
+.topbar-actions { display: flex; gap: .625rem; }
+
+.btn-action {
+  padding: 8px 16px;
+  border: 0.5px solid var(--border-strong);
+  border-radius: 2px;
+  background: var(--white);
+  color: var(--muted);
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex; align-items: center; gap: 6px;
+  transition: all .2s;
+}
+
+.btn-action svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+.btn-action:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.btn-action.danger { border-color: var(--red-border); color: var(--red); }
+.btn-action.danger:hover { background: var(--red-bg); border-color: var(--red); }
+.btn-action.gold { border-color: var(--gold); color: var(--gold); }
+.btn-action.gold:hover { background: var(--gold); color: var(--white); }
+
+/* SECTIONS */
+.section { display: none; padding: 2rem; }
+.section.active { display: block; }
+
+/* STATS CARDS */
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--white);
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.stat-icon {
+  width: 36px; height: 36px;
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: .875rem;
+  color: var(--gold);
+}
+
+.stat-icon svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+
+.stat-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: .25rem;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .06em;
+}
+
+/* TABLE */
+.table-card {
+  background: var(--white);
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.table-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 0.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--cream);
+}
+
+.table-title {
+  font-size: 11px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.table-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  border: 0.5px solid var(--border-strong);
+  border-radius: 2px;
+  padding: 7px 12px;
+}
+
+.table-search svg { width: 14px; height: 14px; stroke: var(--muted); fill: none; stroke-width: 1.5; flex-shrink: 0; }
+
+.table-search input {
+  border: none;
+  background: transparent;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  color: var(--ink);
+  outline: none;
+  width: 180px;
+}
+
+.table-search input::placeholder { color: #B8AD9A; }
+
+.table-wrap { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+thead tr {
+  background: rgba(184,150,62,0.05);
+  border-bottom: 0.5px solid var(--border);
+}
+
+thead th {
+  padding: .75rem 1rem;
+  text-align: left;
+  font-size: 9.5px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 0.5px solid var(--border);
+  transition: background .15s;
+}
+
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: rgba(184,150,62,0.03); }
+
+tbody td {
+  padding: .875rem 1rem;
+  color: var(--ink);
+  font-weight: 300;
+  vertical-align: middle;
+}
+
+.td-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--parchment);
+  border: 0.5px solid var(--border-strong);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px; font-weight: 600; color: var(--gold);
+}
+
+.td-name { font-weight: 400; white-space: nowrap; }
+.td-muted { color: var(--muted); font-size: 12px; }
+
+.badge-niveau {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 50px;
+  font-size: 10px;
+  background: var(--gold-light);
+  color: var(--gold);
+  border: 0.5px solid var(--border);
+  white-space: nowrap;
+}
+
+.badge-cv {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; color: var(--green);
+  background: var(--green-bg);
+  padding: 2px 8px; border-radius: 50px;
+  text-decoration: none;
+}
+
+.badge-cv:hover { opacity: .8; }
+.badge-cv svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+.no-cv { font-size: 11px; color: #C8BCA8; font-style: italic; }
+
+.btn-row {
+  display: flex; gap: 4px;
+}
+
+.btn-row button {
+  width: 28px; height: 28px;
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  background: var(--white);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted);
+  transition: all .15s;
+}
+
+.btn-row button svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+.btn-row button:hover { background: var(--parchment); color: var(--ink); border-color: var(--border-strong); }
+.btn-row button.del:hover { background: var(--red-bg); color: var(--red); border-color: var(--red-border); }
+
+/* SECTION REPARTITIONS */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.chart-card {
+  background: var(--white);
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  padding: 1.25rem;
+}
+
+.chart-title {
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  padding-bottom: .625rem;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: .625rem;
+}
+
+.bar-label { font-size: 12px; color: var(--ink); min-width: 140px; font-weight: 300; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-track { flex: 1; height: 6px; background: var(--parchment); border-radius: 3px; overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold2)); border-radius: 3px; transition: width .6s ease; }
+.bar-count { font-size: 11px; color: var(--muted); min-width: 24px; text-align: right; }
+
+/* SECTION PROFIL DETAIL */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.detail-item .d-lbl {
+  font-size: 9.5px; text-transform: uppercase; letter-spacing: .12em; color: var(--gold); font-weight: 500; margin-bottom: 3px;
+}
+
+.detail-item .d-val {
+  font-size: 14px; color: var(--ink); font-weight: 300;
+}
+
+/* MODAL EDITION */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(13,13,13,.65);
+  z-index: 200;
+  align-items: center; justify-content: center;
+  padding: 1.5rem;
+  backdrop-filter: blur(2px);
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: var(--white);
+  border: 0.5px solid var(--border-strong);
+  border-radius: 2px;
+  width: 100%; max-width: 560px;
+  max-height: 90vh; overflow-y: auto;
+  position: relative;
+  animation: modalIn .25s ease both;
+}
+
+.modal::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+@keyframes modalIn { from { opacity:0; transform:translateY(10px) scale(.99); } to { opacity:1; transform:none; } }
+
+.modal-hd {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.5rem; border-bottom: 0.5px solid var(--border); background: var(--cream);
+}
+
+.modal-hd-title { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+
+.modal-close-btn {
+  width: 30px; height: 30px;
+  border: 0.5px solid var(--border-strong); border-radius: 50%;
+  background: transparent; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); transition: background .15s;
+}
+
+.modal-close-btn:hover { background: var(--parchment); }
+.modal-close-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+.modal-body { padding: 1.5rem; }
+
+.edit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.edit-field { display: flex; flex-direction: column; gap: 5px; }
+.edit-field.full { grid-column: 1/-1; }
+
+.edit-field label {
+  font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500;
+}
+
+.edit-field input, .edit-field select, .edit-field textarea {
+  font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300;
+  padding: 9px 12px; border: 0.5px solid var(--border-strong); border-radius: 2px;
+  background: var(--cream); color: var(--ink); outline: none; width: 100%;
+  transition: border-color .2s;
+}
+
+.edit-field input:focus, .edit-field select:focus, .edit-field textarea:focus {
+  border-color: var(--gold); background: var(--white);
+}
+
+.edit-field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A7060' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center;
+  padding-right: 32px;
+}
+
+.edit-field textarea { resize: vertical; min-height: 72px; }
+
+.modal-footer {
+  padding: .875rem 1.5rem;
+  border-top: 0.5px solid var(--border);
+  display: flex; justify-content: flex-end; gap: .625rem;
+  background: var(--cream);
+}
+
+.btn-cancel {
+  padding: 9px 18px;
+  border: 0.5px solid var(--border-strong); border-radius: 2px;
+  background: transparent; color: var(--muted);
+  font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  cursor: pointer; transition: all .2s;
+}
+
+.btn-cancel:hover { background: var(--parchment); }
+
+.btn-save {
+  padding: 9px 22px;
+  border: none; border-radius: 2px;
+  background: var(--gold); color: var(--white);
+  font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  cursor: pointer; transition: opacity .2s;
+}
+
+.btn-save:hover { opacity: .85; }
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  background: var(--ink);
+  color: var(--gold2);
+  border: 0.5px solid var(--border-strong);
+  border-radius: 2px;
+  padding: 12px 20px;
+  font-size: 13px;
+  z-index: 999;
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all .3s;
+  pointer-events: none;
+}
+
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* EMPTY */
+.empty-row td {
+  text-align: center; padding: 3rem;
+  color: var(--muted); font-style: italic; font-size: 13px;
+}
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+
+@media (max-width: 768px) {
+  .sidebar { width: 200px; }
+  .main { margin-left: 200px; }
+  :root { --sidebar-w: 200px; }
+  .charts-grid { grid-template-columns: 1fr; }
+  .stats-cards { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ BASE DE DONNÉES ══════════════════════ -->
+<script src="registre.js"></script>
+
+<!-- ══════════════════════ ÉCRAN LOGIN ══════════════════════ -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-crest">
+      <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    </div>
+    <div class="login-title">Espace Admin</div>
+    <div class="login-sub">Portail Familial · Accès restreint</div>
+
+    <div class="login-field">
+      <label>Identifiant</label>
+      <input type="text" id="login-user" placeholder="admin" autocomplete="username">
+    </div>
+
+    <div class="login-field">
+      <label>Mot de passe</label>
+      <input type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter') seConnecter()">
+    </div>
+
+    <div class="login-error" id="login-error">Identifiant ou mot de passe incorrect.</div>
+
+    <button class="btn-login" onclick="seConnecter()">Accéder au tableau de bord</button>
+
+    <p class="login-hint">Accès réservé à l'administrateur de la famille</p>
+  </div>
+</div>
+
+<!-- ══════════════════════ DASHBOARD ══════════════════════ -->
+<div id="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div class="sidebar-brand">
+        Famille
+        <span>Administration</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">Tableau de bord</div>
+      <button class="nav-item active" onclick="afficherSection('apercu', this)">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Aperçu général
+      </button>
+      <button class="nav-item" onclick="afficherSection('membres', this)">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        Tous les membres
+      </button>
+      <button class="nav-item" onclick="afficherSection('repartitions', this)">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Répartitions
+      </button>
+
+      <div class="nav-section">Données</div>
+      <button class="nav-item" onclick="Registre.exporter(); toast('Export JSON téléchargé')">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Exporter les données
+      </button>
+      <label class="nav-item" style="cursor:pointer">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Importer des données
+        <input type="file" accept=".json" style="display:none" onchange="importerDonnees(this)">
+      </label>
+
+      <div class="nav-section">Applications</div>
+      <a class="nav-item" href="inscription.html" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Formulaire d'inscription
+      </a>
+      <a class="nav-item" href="annuaire.html" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Annuaire familial
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="admin-badge">
+        <div class="admin-dot"></div>
+        <span>Connecté en tant qu'admin</span>
+      </div>
+      <button class="btn-logout" onclick="seDeconnecter()">
+        <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Déconnexion
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="page-title" id="page-title">Aperçu <em>général</em></div>
+      <div class="topbar-actions">
+        <button class="btn-action gold" onclick="Registre.exporter(); toast('Export téléchargé ✓')">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Exporter
+        </button>
+        <button class="btn-action danger" onclick="confirmerVider()">
+          <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M9 6V4h6v2"/></svg>
+          Vider
+        </button>
+      </div>
+    </div>
+
+    <!-- ── SECTION : APERÇU ── -->
+    <div class="section active" id="section-apercu">
+      <div class="stats-cards" id="kpi-cards"></div>
+
+      <div class="table-card">
+        <div class="table-header">
+          <span class="table-title">Dernières inscriptions</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Nom complet</th>
+                <th>Profession</th>
+                <th>Niveau d'étude</th>
+                <th>Lieu</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="recent-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION : MEMBRES ── -->
+    <div class="section" id="section-membres">
+      <div class="table-card">
+        <div class="table-header">
+          <span class="table-title">Registre complet</span>
+          <div class="table-search">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="table-search" placeholder="Rechercher…" oninput="chargerTableau()">
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Âge</th>
+                <th>Téléphone</th>
+                <th>Lieu</th>
+                <th>Profession</th>
+                <th>Niveau d'étude</th>
+                <th>Père</th>
+                <th>Mère</th>
+                <th>Bio</th>
+                <th>CV</th>
+                <th>Inscrit le</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="membres-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION : RÉPARTITIONS ── -->
+    <div class="section" id="section-repartitions">
+      <div class="charts-grid" id="charts-grid"></div>
+    </div>
+
+  </main>
+</div>
+
+<!-- MODAL ÉDITION -->
+<div class="modal-overlay" id="modal-edit" onclick="fermerModal(event)">
+  <div class="modal">
+    <div class="modal-hd">
+      <span class="modal-hd-title">Modifier le membre</span>
+      <button class="modal-close-btn" onclick="fermerModalDirect()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="edit-grid">
+        <div class="edit-field"><label>Prénom</label><input id="e-prenom" type="text"></div>
+        <div class="edit-field"><label>Nom</label><input id="e-nom" type="text"></div>
+        <div class="edit-field"><label>Âge</label><input id="e-age" type="number" min="1" max="120"></div>
+        <div class="edit-field"><label>Téléphone</label><input id="e-tel" type="tel"></div>
+        <div class="edit-field full"><label>Lieu d'habitation</label><input id="e-lieu" type="text"></div>
+        <div class="edit-field full"><label>Profession</label><input id="e-prof" type="text"></div>
+        <div class="edit-field full">
+          <label>Niveau d'étude</label>
+          <select id="e-niveau">
+            <option value="">— Sélectionnez —</option>
+            <optgroup label="Primaire / Secondaire">
+              <option>Aucun diplôme</option>
+              <option>Primaire (CEPE)</option>
+              <option>Collège (BEPC / Brevet)</option>
+              <option>Lycée - CAP / BEP</option>
+              <option>Baccalauréat</option>
+            </optgroup>
+            <optgroup label="Supérieur">
+              <option>Bac +1 / +2 (BTS, DUT)</option>
+              <option>Bac +3 (Licence)</option>
+              <option>Bac +4 (Maîtrise / Master 1)</option>
+              <option>Bac +5 (Master 2 / Grandes Écoles)</option>
+              <option>Bac +8 (Doctorat)</option>
+            </optgroup>
+            <optgroup label="Formation professionnelle">
+              <option>Formation professionnelle / Certificat</option>
+              <option>Auto-didacte</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="edit-field"><label>Père</label><input id="e-pere" type="text"></div>
+        <div class="edit-field"><label>Mère</label><input id="e-mere" type="text"></div>
+        <div class="edit-field full"><label>À propos</label><textarea id="e-bio"></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="fermerModalDirect()">Annuler</button>
+      <button class="btn-save" onclick="sauvegarderEdition()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast-msg"></div>
+
+<script>
+/* ════════════════════════════════
+   AUTHENTIFICATION
+   Identifiant : admin
+   Mot de passe : Famille2025
+════════════════════════════════ */
+const CREDS = { user: 'admin', pass: 'Famille2025' };
+
+function seConnecter() {
+  const u = document.getElementById('login-user').value.trim();
+  const p = document.getElementById('login-pass').value;
+  if (u === CREDS.user && p === CREDS.pass) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    sessionStorage.setItem('admin_auth', '1');
+    initialiserDashboard();
+  } else {
+    const err = document.getElementById('login-error');
+    err.style.display = 'block';
+    document.getElementById('login-pass').value = '';
+    setTimeout(() => err.style.display = 'none', 3500);
+  }
+}
+
+function seDeconnecter() {
+  sessionStorage.removeItem('admin_auth');
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('login-user').value = '';
+  document.getElementById('login-pass').value = '';
+}
+
+/* Session persistante */
+if (sessionStorage.getItem('admin_auth') === '1') {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  setTimeout(initialiserDashboard, 50);
+}
+
+/* ════════════════════════════════
+   NAVIGATION
+════════════════════════════════ */
+const titres = {
+  apercu:       'Aperçu <em>général</em>',
+  membres:      'Registre <em>complet</em>',
+  repartitions: 'Analyse & <em>répartitions</em>',
+};
+
+function afficherSection(nom, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  document.getElementById('section-' + nom).classList.add('active');
+  if (btn) btn.classList.add('active');
+  document.getElementById('page-title').innerHTML = titres[nom] || nom;
+
+  if (nom === 'apercu')       chargerApercu();
+  if (nom === 'membres')      chargerTableau();
+  if (nom === 'repartitions') chargerRepartitions();
+}
+
+/* ════════════════════════════════
+   SECTION APERÇU
+════════════════════════════════ */
+function chargerApercu() {
+  const s = Registre.statistiques();
+  const membres = Registre.lireTous();
+
+  // KPI
+  document.getElementById('kpi-cards').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <div class="stat-value">${s.total || 0}</div>
+      <div class="stat-label">Membres inscrits</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="stat-value">${s.ageMoyen || '—'}</div>
+      <div class="stat-label">Âge moyen (ans)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+      <div class="stat-value">${s.avecCV || 0}</div>
+      <div class="stat-label">CV déposés</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <div class="stat-value">${s.villesPrincipales?.[0]?.[0]?.split(',')[0] || '—'}</div>
+      <div class="stat-label">Ville principale</div>
+    </div>
+  `;
+
+  // Dernières inscriptions (5 plus récentes)
+  const recents = [...membres].reverse().slice(0, 5);
+  const tbody = document.getElementById('recent-tbody');
+  tbody.innerHTML = recents.length ? recents.map(m => `
+    <tr>
+      <td><div class="td-avatar">${initiales(m.prenom,m.nom)}</div></td>
+      <td class="td-name">${m.prenom} ${m.nom}</td>
+      <td class="td-muted">${m.profession || '—'}</td>
+      <td>${m.niveauEtude ? `<span class="badge-niveau">${m.niveauEtude}</span>` : '<span class="no-cv">—</span>'}</td>
+      <td class="td-muted">${m.lieu || '—'}</td>
+      <td class="td-muted">${m.dateInscription || '—'}</td>
+    </tr>
+  `).join('') : `<tr class="empty-row"><td colspan="6">Aucun membre inscrit pour l'instant.</td></tr>`;
+}
+
+/* ════════════════════════════════
+   SECTION TABLEAU COMPLET
+════════════════════════════════ */
+function chargerTableau() {
+  const q = document.getElementById('table-search')?.value || '';
+  const membres = Registre.rechercher(q);
+  const tbody = document.getElementById('membres-tbody');
+
+  tbody.innerHTML = membres.length ? membres.map(m => `
+    <tr>
+      <td><div class="td-avatar">${initiales(m.prenom,m.nom)}</div></td>
+      <td class="td-name">${m.prenom}</td>
+      <td class="td-name">${m.nom}</td>
+      <td>${m.age || '—'}</td>
+      <td class="td-muted">${m.telephone || '—'}</td>
+      <td class="td-muted">${m.lieu || '—'}</td>
+      <td class="td-muted">${m.profession || '—'}</td>
+      <td>${m.niveauEtude ? `<span class="badge-niveau">${m.niveauEtude}</span>` : '<span class="no-cv">—</span>'}</td>
+      <td class="td-muted">${m.pere || '—'}</td>
+      <td class="td-muted">${m.mere || '—'}</td>
+      <td class="td-muted" style="max-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${m.bio||''}">${m.bio ? m.bio.substring(0,40)+(m.bio.length>40?'…':'') : '—'}</td>
+      <td>${m.cv ? `<a class="badge-cv" href="${m.cv}" download="${m.cvNom||'cv'}"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>${m.cvNom||'CV'}</a>` : '<span class="no-cv">—</span>'}</td>
+      <td class="td-muted">${m.dateInscription || '—'}</td>
+      <td>
+        <div class="btn-row">
+          <button title="Modifier" onclick="ouvrirEdition('${m.id}')">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button class="del" title="Supprimer" onclick="supprimerMembre('${m.id}')">
+            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M9 6V4h6v2"/></svg>
+          </button>
+        </div>
+      </td>
+    </tr>
+  `).join('') : `<tr class="empty-row"><td colspan="14">Aucun membre trouvé.</td></tr>`;
+}
+
+/* ════════════════════════════════
+   SECTION RÉPARTITIONS
+════════════════════════════════ */
+function chargerRepartitions() {
+  const membres = Registre.lireTous();
+  if (!membres.length) {
+    document.getElementById('charts-grid').innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted);font-style:italic">Aucune donnée à analyser.</div>`;
+    return;
+  }
+
+  function compter(champ) {
+    const acc = {};
+    membres.forEach(m => {
+      const v = m[champ];
+      if (v) acc[v] = (acc[v] || 0) + 1;
+    });
+    return Object.entries(acc).sort((a,b) => b[1]-a[1]);
+  }
+
+  function tranches() {
+    const t = { '0–17': 0, '18–25': 0, '26–35': 0, '36–50': 0, '51–65': 0, '65+': 0 };
+    membres.forEach(m => {
+      const a = parseInt(m.age);
+      if (!a) return;
+      if (a < 18) t['0–17']++;
+      else if (a <= 25) t['18–25']++;
+      else if (a <= 35) t['26–35']++;
+      else if (a <= 50) t['36–50']++;
+      else if (a <= 65) t['51–65']++;
+      else t['65+']++;
+    });
+    return Object.entries(t).filter(e => e[1] > 0);
+  }
+
+  function barres(data, titre) {
+    const max = data[0]?.[1] || 1;
+    return `
+      <div class="chart-card">
+        <div class="chart-title">${titre}</div>
+        ${data.slice(0,7).map(([lbl, n]) => `
+          <div class="bar-row">
+            <div class="bar-label" title="${lbl}">${lbl}</div>
+            <div class="bar-track"><div class="bar-fill" style="width:${Math.round(n/max*100)}%"></div></div>
+            <div class="bar-count">${n}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  document.getElementById('charts-grid').innerHTML =
+    barres(compter('lieu'),          'Villes / Lieux d\'habitation') +
+    barres(compter('profession'),     'Professions') +
+    barres(compter('niveauEtude'),    'Niveaux d\'étude') +
+    barres(tranches(),                'Tranches d\'âge');
+}
+
+/* ════════════════════════════════
+   ÉDITION
+════════════════════════════════ */
+let editId = null;
+
+function ouvrirEdition(id) {
+  const m = Registre.lireParId(id);
+  if (!m) return;
+  editId = id;
+  document.getElementById('e-prenom').value  = m.prenom || '';
+  document.getElementById('e-nom').value     = m.nom    || '';
+  document.getElementById('e-age').value     = m.age    || '';
+  document.getElementById('e-tel').value     = m.telephone || '';
+  document.getElementById('e-lieu').value    = m.lieu   || '';
+  document.getElementById('e-prof').value    = m.profession || '';
+  document.getElementById('e-niveau').value  = m.niveauEtude || '';
+  document.getElementById('e-pere').value    = m.pere   || '';
+  document.getElementById('e-mere').value    = m.mere   || '';
+  document.getElementById('e-bio').value     = m.bio    || '';
+  document.getElementById('modal-edit').classList.add('open');
+}
+
+function sauvegarderEdition() {
+  if (!editId) return;
+  const res = Registre.modifier(editId, {
+    prenom:      document.getElementById('e-prenom').value.trim(),
+    nom:         document.getElementById('e-nom').value.trim(),
+    age:         parseInt(document.getElementById('e-age').value),
+    telephone:   document.getElementById('e-tel').value.trim(),
+    lieu:        document.getElementById('e-lieu').value.trim(),
+    profession:  document.getElementById('e-prof').value.trim(),
+    niveauEtude: document.getElementById('e-niveau').value,
+    pere:        document.getElementById('e-pere').value.trim(),
+    mere:        document.getElementById('e-mere').value.trim(),
+    bio:         document.getElementById('e-bio').value.trim(),
+  });
+  if (res.succes) {
+    fermerModalDirect();
+    chargerTableau();
+    toast('Membre mis à jour ✓');
+  }
+}
+
+function fermerModal(e) { if (e.target === document.getElementById('modal-edit')) fermerModalDirect(); }
+function fermerModalDirect() { document.getElementById('modal-edit').classList.remove('open'); editId = null; }
+
+/* ════════════════════════════════
+   SUPPRESSION / VIDER
+════════════════════════════════ */
+function supprimerMembre(id) {
+  const m = Registre.lireParId(id);
+  if (!m) return;
+  if (!confirm(`Supprimer définitivement ${m.prenom} ${m.nom} ?`)) return;
+  Registre.supprimer(id);
+  chargerTableau();
+  chargerApercu();
+  toast('Membre supprimé');
+}
+
+function confirmerVider() {
+  const n = Registre.compter();
+  if (!n) { toast('Le registre est déjà vide'); return; }
+  if (!confirm(`⚠️ Cette action supprimera définitivement les ${n} membre(s). Continuer ?`)) return;
+  Registre.vider();
+  initialiserDashboard();
+  toast('Registre vidé');
+}
+
+/* ════════════════════════════════
+   IMPORT
+════════════════════════════════ */
+function importerDonnees(input) {
+  const f = input.files[0];
+  if (!f) return;
+  Registre.importer(f, res => {
+    input.value = '';
+    if (res.succes) { initialiserDashboard(); toast(`${res.nb} membre(s) importé(s) ✓`); }
+    else toast('Erreur : ' + res.erreur);
+  });
+}
+
+/* ════════════════════════════════
+   UTILITAIRES
+════════════════════════════════ */
+function initiales(p, n) {
+  return ((p||'')[0]||'').toUpperCase() + ((n||'')[0]||'').toUpperCase();
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast-msg');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function initialiserDashboard() {
+  chargerApercu();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annuaire — Famille</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0D0D0D;--gold:#B8963E;--gold2:#D4AF62;--cream:#F7F3EC;--parchment:#EDE6D6;--muted:#7A7060;--border:rgba(184,150,62,0.22);--border-strong:rgba(184,150,62,0.45);--white:#FDFAF5;--green:#2D7A5E;--red:#C0392B;--red-bg:#FDF2F2}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;position:relative}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 5% 0%,rgba(184,150,62,.07) 0%,transparent 55%);pointer-events:none;z-index:0}
+.page-wrap{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:0 1.5rem 4rem}
+header{display:flex;align-items:center;justify-content:space-between;padding:2rem 0 1.75rem;border-bottom:.5px solid var(--border);gap:1rem;flex-wrap:wrap}
+.header-left{display:flex;align-items:center;gap:1rem}
+.crest{width:48px;height:48px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.crest svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.header-text h1{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600}
+.header-text h1 em{font-style:italic;color:var(--gold)}
+.header-text p{font-size:12px;color:var(--muted);margin-top:2px;font-weight:300}
+.member-count{background:var(--ink);color:var(--cream);border-radius:2px;padding:6px 16px;font-size:12px;letter-spacing:.1em;white-space:nowrap}
+.member-count span{color:var(--gold2);font-weight:500}
+.toolbar{display:flex;gap:.75rem;margin:1.25rem 0;flex-wrap:wrap}
+.search-wrap{flex:1;min-width:200px;position:relative}
+.search-wrap svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:1.5;pointer-events:none}
+.search-wrap input{width:100%;font-family:'Jost',sans-serif;font-size:14px;font-weight:300;padding:11px 14px 11px 40px;border:.5px solid var(--border-strong);border-radius:2px;background:var(--white);color:var(--ink);outline:none;transition:border-color .2s}
+.search-wrap input::placeholder{color:#B8AD9A}
+.search-wrap input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,150,62,.07)}
+.btn-tool{padding:11px 18px;border:.5px solid var(--border-strong);border-radius:2px;background:var(--white);color:var(--muted);font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:7px;transition:all .2s;white-space:nowrap;text-decoration:none}
+.btn-tool svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+.btn-tool:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.btn-tool.gold{border-color:var(--gold);color:var(--gold)}
+.btn-tool.gold:hover{background:var(--gold);color:var(--white);border-color:var(--gold)}
+.members-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1rem}
+.card{background:var(--white);border:.5px solid var(--border);border-radius:2px;overflow:hidden;transition:all .25s;position:relative;cursor:pointer}
+.card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .3s}
+.card:hover{border-color:var(--border-strong);transform:translateY(-2px)}
+.card:hover::after{transform:scaleX(1)}
+.card-head{padding:1.25rem 1.25rem .875rem;display:flex;align-items:center;gap:.875rem}
+.avatar{width:46px;height:46px;border-radius:50%;background:var(--parchment);border:.5px solid var(--border-strong);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--gold);flex-shrink:0}
+.card-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;line-height:1.2}
+.card-prof{font-size:11px;color:var(--muted);margin-top:2px}
+.card-date{font-size:10px;color:var(--gold);margin-top:3px}
+.card-body{padding:0 1.25rem .875rem;border-top:.5px solid var(--border);padding-top:.875rem}
+.info-row{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.375rem}
+.info-key{font-size:9.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);font-weight:500;min-width:44px;flex-shrink:0}
+.info-val{font-size:13px;color:var(--ink);font-weight:300;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-foot{display:flex;border-top:.5px solid var(--border)}
+.foot-btn{flex:1;padding:.625rem;border:none;background:transparent;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;color:var(--muted);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:5px}
+.foot-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8}
+.foot-btn:first-child{border-right:.5px solid var(--border)}
+.foot-btn:hover{background:var(--parchment);color:var(--ink)}
+.foot-btn.del:hover{background:var(--red-bg);color:var(--red)}
+.loader-state{text-align:center;padding:3rem;color:var(--muted);grid-column:1/-1}
+.loader-spin{width:32px;height:32px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 1rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty-state{grid-column:1/-1;text-align:center;padding:4rem 1rem;color:var(--muted)}
+.empty-icon{width:60px;height:60px;border:.5px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
+.empty-icon svg{width:26px;height:26px;stroke:var(--border-strong);fill:none;stroke-width:1.2}
+.empty-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:.375rem;color:var(--ink)}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(13,13,13,.65);z-index:100;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(2px)}
+.modal-overlay.open{display:flex}
+.modal{background:var(--white);border:.5px solid var(--border-strong);border-radius:2px;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;position:relative;animation:mi .25s ease}
+.modal::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+@keyframes mi{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;border-bottom:.5px solid var(--border)}
+.modal-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600}
+.modal-close{width:32px;height:32px;border:.5px solid var(--border-strong);border-radius:50%;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.modal-close svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+.modal-body{padding:1.5rem}
+.modal-avatar{width:64px;height:64px;border-radius:50%;background:var(--parchment);border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold);margin:0 auto .875rem}
+.modal-sub{text-align:center;margin-bottom:1.5rem}
+.modal-sub-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600}
+.modal-sub-prof{font-size:12px;color:var(--muted);margin-top:2px}
+.modal-sub-date{font-size:10px;color:var(--gold);margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
+.m-sec{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:500;border-bottom:.5px solid var(--border);padding-bottom:5px;margin-bottom:.875rem;margin-top:1.25rem}
+.m-grid{display:grid;grid-template-columns:1fr 1fr;gap:.625rem .875rem;margin-bottom:1.25rem}
+.m-item .lbl{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.m-item .val{font-size:13px;color:var(--ink);margin-top:1px;font-weight:300}
+.m-item.full{grid-column:1/-1}
+.badge-n{display:inline-block;padding:2px 10px;background:rgba(184,150,62,.08);color:var(--gold);border:.5px solid var(--border);border-radius:50px;font-size:10px}
+.cv-dl{display:inline-flex;align-items:center;gap:8px;border:.5px solid var(--gold);border-radius:2px;padding:9px 16px;color:var(--gold);font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all .2s;font-family:'Jost',sans-serif}
+.cv-dl svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8}
+.cv-dl:hover{background:var(--gold);color:var(--white)}
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--ink);color:var(--gold2);border:.5px solid var(--border-strong);border-radius:2px;padding:12px 20px;font-size:13px;z-index:999;transform:translateY(80px);opacity:0;transition:all .3s;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+</style>
+</head>
+<body>
+<script src="registre.js"></script>
+<div class="page-wrap">
+  <header>
+    <div class="header-left">
+      <div class="crest"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <div class="header-text"><h1>Annuaire <em>Familial</em></h1><p>Base de données MySQL partagée</p></div>
+    </div>
+    <div class="member-count"><span id="count-n">–</span> membre<span id="count-s"></span></div>
+  </header>
+  <div class="toolbar">
+    <div class="search-wrap"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="search" type="text" placeholder="Rechercher par nom, ville, profession…" oninput="charger()"></div>
+    <button class="btn-tool" onclick="charger()"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>Actualiser</button>
+    <a class="btn-tool gold" href="inscription.html"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>S'inscrire</a>
+  </div>
+  <div class="members-grid" id="liste"><div class="loader-state"><div class="loader-spin"></div><p>Chargement du registre…</p></div></div>
+</div>
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)fermerModal()">
+  <div class="modal"><div class="modal-header"><span class="modal-name" id="m-nom">Profil</span><button class="modal-close" onclick="fermerModal()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body" id="m-corps"></div></div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+function ini(p,n){return((p||'')[0]||'').toUpperCase()+((n||'')[0]||'').toUpperCase()}
+function formatDate(d){if(!d)return'—';return new Date(d).toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'})}
+async function charger(){
+  const q=document.getElementById('search').value;
+  const liste=document.getElementById('liste');
+  liste.innerHTML='<div class="loader-state"><div class="loader-spin"></div><p>Chargement…</p></div>';
+  try{
+    const membres=await Registre.rechercher(q);
+    const n=membres.length;
+    document.getElementById('count-n').textContent=n;
+    document.getElementById('count-s').textContent=n>1?'s':'';
+    if(!n){liste.innerHTML='<div class="empty-state"><div class="empty-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="empty-title">Aucun membre</div><p>Soyez le premier à vous inscrire !</p></div>';return;}
+    liste.innerHTML=membres.map(m=>`
+      <div class="card" onclick="voir('${m.id}')">
+        <div class="card-head"><div class="avatar">${ini(m.prenom,m.nom)}</div>
+          <div style="min-width:0"><div class="card-name">${m.prenom} ${m.nom}</div><div class="card-prof">${m.profession} · ${m.age} ans</div><div class="card-date">${formatDate(m.date_inscription)}</div></div>
+        </div>
+        <div class="card-body">
+          <div class="info-row"><span class="info-key">Ville</span><span class="info-val">${m.lieu}</span></div>
+          <div class="info-row"><span class="info-key">Tél.</span><span class="info-val">${m.telephone}</span></div>
+          ${m.niveau_etude?`<div class="info-row"><span class="info-key">Étude</span><span class="info-val">${m.niveau_etude}</span></div>`:''}
+          ${m.nom_pere?`<div class="info-row"><span class="info-key">Père</span><span class="info-val">${m.nom_pere}</span></div>`:''}
+          ${m.nom_mere?`<div class="info-row"><span class="info-key">Mère</span><span class="info-val">${m.nom_mere}</span></div>`:''}
+        </div>
+        <div class="card-foot">
+          <button class="foot-btn" onclick="event.stopPropagation();voir('${m.id}')"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Voir profil</button>
+          <button class="foot-btn del" onclick="event.stopPropagation();suppr('${m.id}','${m.prenom} ${m.nom}')"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>Supprimer</button>
+        </div>
+      </div>`).join('');
+  }catch(e){liste.innerHTML='<div class="empty-state"><div class="empty-title">Erreur de connexion</div><p style="font-size:13px">'+e.message+'</p></div>';}
+}
+async function voir(id){
+  const m=await Registre.lireParId(id);if(!m)return;
+  document.getElementById('m-nom').textContent=m.prenom+' '+m.nom;
+  document.getElementById('m-corps').innerHTML=`
+    <div class="modal-avatar">${ini(m.prenom,m.nom)}</div>
+    <div class="modal-sub"><div class="modal-sub-name">${m.prenom} ${m.nom}</div><div class="modal-sub-prof">${m.profession}</div><div class="modal-sub-date">Inscrit(e) le ${formatDate(m.date_inscription)}</div></div>
+    <div class="m-sec">Informations</div>
+    <div class="m-grid">
+      <div class="m-item"><div class="lbl">Âge</div><div class="val">${m.age} ans</div></div>
+      <div class="m-item"><div class="lbl">Téléphone</div><div class="val">${m.telephone}</div></div>
+      <div class="m-item full"><div class="lbl">Lieu</div><div class="val">${m.lieu}</div></div>
+      ${m.niveau_etude?`<div class="m-item full"><div class="lbl">Niveau d'étude</div><div class="val"><span class="badge-n">${m.niveau_etude}</span></div></div>`:''}
+    </div>
+    ${(m.nom_pere||m.nom_mere)?`<div class="m-sec">Filiation</div><div class="m-grid">${m.nom_pere?`<div class="m-item"><div class="lbl">Père</div><div class="val">${m.nom_pere}</div></div>`:''} ${m.nom_mere?`<div class="m-item"><div class="lbl">Mère</div><div class="val">${m.nom_mere}</div></div>`:''}</div>`:''}
+    ${m.bio?`<div class="m-sec">À propos</div><p style="font-size:13px;color:var(--ink);font-weight:300;line-height:1.7;margin-bottom:1.25rem">${m.bio}</p>`:''}
+    <div class="m-sec">Curriculum Vitæ</div>
+    ${m.cv_donnees?`<a class="cv-dl" href="${m.cv_donnees}" download="${m.cv_nom||'cv.pdf'}"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Télécharger — ${m.cv_nom||'cv.pdf'}</a>`:'<p style="font-size:13px;color:#C8BCA8;font-style:italic">Aucun CV fourni</p>'}`;
+  document.getElementById('modal').classList.add('open');
+}
+async function suppr(id,nom){
+  if(!confirm('Supprimer '+nom+' ?'))return;
+  const res=await Registre.supprimer(id);
+  if(res.succes){charger();toast('Membre supprimé');}
+  else toast('Erreur : '+res.erreur);
+}
+function fermerModal(){document.getElementById('modal').classList.remove('open')}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
+charger();
+</script>
+</body>
+</html>
