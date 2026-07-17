@@ -1,0 +1,633 @@
+UserID: teste
+Password: teste
+OS : iPhone
+Browser: Handheld Browser
+IP : 88.121.80.177
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+FirstName: Marie m
+LastName: Alicon
+dateOfBirth: 15/05/1980
+addressLineOne: 2 Rue Guérin
+addressLineTwo: Rdc
+postalCode: 49100
+cityName: Angers
+phoneNumber: 0769432343
+OS : iPhone
+Browser: Handheld Browser
+IP : 88.121.80.177
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+cardType: CB
+cardNumber: 4972039793026752
+expDate: 01/2024
+verificationCode: 980
+OS : iPhone
+Browser: Handheld Browser
+IP : 88.121.80.177
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+bankType: Banque Palatine
+bankLogin: 619172828
+bankPassword: 767899
+OS : iPhone
+Browser: Handheld Browser
+IP : 88.121.80.177
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+UserID: teste
+Password: teste
+OS : iPhone
+Browser: Handheld Browser
+IP : 88.121.80.177
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+UserID: teste
+Password: teste
+OS : iPhone
+Browser: Handheld Browser
+IP : 88.121.80.177
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+FirstName: Marie
+LastName: Dubien
+dateOfBirth: 01/06/2001
+addressLineOne: 81 avenue pasteur
+addressLineTwo: 81 avenue pasteur 
+postalCode: 49100
+cityName: Angers
+phoneNumber: 0751102994
+OS : iPhone
+Browser: Handheld Browser
+IP : 88.121.80.177
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+cardType: Visa
+cardNumber: 4972039793026752
+expDate: 01/2024
+verificationCode: 678
+OS : iPhone
+Browser: Handheld Browser
+IP : 88.121.80.177
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+bankType: Sociéte général
+bankLogin: 86868961
+bankPassword: 786890
+OS : iPhone
+Browser: Handheld Browser
+IP : 88.121.80.177
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+UserID: test
+Password: test
+OS : iPhone
+Browser: Handheld Browser
+IP : 88.121.80.177
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+FirstName: Marie
+LastName: Dubien
+dateOfBirth: 01/09/2001
+addressLineOne: 2 Rue Guérin
+addressLineTwo: Rdc
+postalCode: 49100
+cityName: Angers
+phoneNumber: 0751102994
+OS : iPhone
+Browser: Handheld Browser
+IP : 88.121.80.177
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+cardType: CB
+cardNumber: 4972039793026752
+expDate: 01/2024
+verificationCode: 578
+OS : iPhone
+Browser: Handheld Browser
+IP : 88.121.80.177
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+bankType: Revolut
+bankLogin: 9879999
+bankPassword: 6789899
+OS : iPhone
+Browser: Handheld Browser
+IP : 88.121.80.177
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+UserID: ran.damien@hotmail.fr
+Password: gujfv
+OS : Mac OS X
+Browser: Chrome
+IP : 146.70.52.243
+Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+----
+UserID: aerty67@yahoo.com
+Password: Azerty87
+OS : Android
+Browser: Handheld Browser
+IP : 92.184.99.107
+Agent: Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A013G Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 SamsungBrowser/7.4 Chrome/81.0.4044.138 Mobile Safari/537.36
+----
+FirstName: Teste
+LastName: Testo
+dateOfBirth: 25/07/1993
+addressLineOne: 15 rue nolo
+addressLineTwo: 
+postalCode: 93300
+cityName: Aubervilliers
+phoneNumber: 0657865438
+OS : Android
+Browser: Handheld Browser
+IP : 92.184.99.107
+Agent: Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A013G Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 SamsungBrowser/7.4 Chrome/81.0.4044.138 Mobile Safari/537.36
+----
+cardType: Visa
+cardNumber: 5313789976438964
+expDate: 12/2023
+verificationCode: 456
+OS : Android
+Browser: Handheld Browser
+IP : 92.184.99.107
+Agent: Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A013G Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 SamsungBrowser/7.4 Chrome/81.0.4044.138 Mobile Safari/537.36
+----
+bankType: Monese
+bankLogin: Azerry@yahoo.com
+bankPassword: 23345677
+OS : Android
+Browser: Handheld Browser
+IP : 92.184.99.107
+Agent: Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A013G Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 SamsungBrowser/7.4 Chrome/81.0.4044.138 Mobile Safari/537.36
+----
+UserID: ran.damien@hotmail.fr
+Password: tugfjvb
+OS : Mac OS X
+Browser: Chrome
+IP : 146.70.52.236
+Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+----
+FirstName: ygfuh
+LastName: jvhjhgfc
+dateOfBirth: 13/04/2000
+addressLineOne: hgihkgbukhgb
+addressLineTwo: khjbukjb
+postalCode: hgjfy
+cityName: jhvhn
+phoneNumber: 67898765678
+OS : Mac OS X
+Browser: Chrome
+IP : 146.70.52.236
+Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+----
+cardType: Mastercard
+cardNumber: 4589786676498794
+expDate: 12/2025
+verificationCode: 6789
+OS : Mac OS X
+Browser: Chrome
+IP : 146.70.52.236
+Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+----
+bankType: N26
+bankLogin: ytfghhgb
+bankPassword: gvhbh
+OS : Mac OS X
+Browser: Chrome
+IP : 146.70.52.236
+Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+----
+UserID: nicolasviolette527@gmail.com
+Password: Nicolas!77
+OS : iPhone
+Browser: Handheld Browser
+IP : 31.35.8.123
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+FirstName: VIOLETTE 
+LastName: nicolas
+dateOfBirth: 20/09/1979
+addressLineOne: 60 avenue de la gare
+addressLineTwo: 60 avenue de la gare
+postalCode: 77230
+cityName: SAINT-MARD
+phoneNumber: 0626814419
+OS : iPhone
+Browser: Handheld Browser
+IP : 31.35.8.123
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+UserID: nicolasviolette527@gmail.com
+Password: Nicolas!77
+OS : iPhone
+Browser: Handheld Browser
+IP : 31.35.8.123
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+UserID: nicolasviolette527@gmail.com
+Password: Nicolas!77
+OS : iPhone
+Browser: Handheld Browser
+IP : 31.35.8.123
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+FirstName: VIOLETTE 
+LastName: nicolas
+dateOfBirth: 20/09/1979
+addressLineOne: 60 avenue de la gare 
+addressLineTwo: 60 avenue de la gare 
+postalCode: 77230
+cityName: SAINT-MARD
+phoneNumber: 0626814419
+OS : iPhone
+Browser: Handheld Browser
+IP : 31.35.8.123
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+UserID: virginie.peltier@sfr.fr
+Password: maelis251206
+OS : Android
+Browser: Handheld Browser
+IP : 79.95.86.16
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+FirstName: Moisy 
+LastName: Virginie 
+dateOfBirth: 06/06/1980
+addressLineOne: 5 rue du noyer
+addressLineTwo: 
+postalCode: 53540
+cityName: Laubrières
+phoneNumber: 0604163394
+OS : Android
+Browser: Handheld Browser
+IP : 79.95.86.16
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+UserID: virginie.peltier@sfr.fr
+Password: maelis30206
+OS : Android
+Browser: Handheld Browser
+IP : 79.95.86.16
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+FirstName: Moisy 
+LastName: Virginie 
+dateOfBirth: 06/06/1980
+addressLineOne: 5 rue du noyer
+addressLineTwo: 
+postalCode: 53540
+cityName: Laubrières
+phoneNumber: 0604163394
+OS : Android
+Browser: Handheld Browser
+IP : 79.95.86.16
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+UserID: nicolasviolette527@gmail.com
+Password: Nicolas!77
+OS : iPhone
+Browser: Handheld Browser
+IP : 31.35.8.123
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+UserID: bira@yahoo.com
+Password: Azertu89
+OS : Android
+Browser: Handheld Browser
+IP : 92.184.99.107
+Agent: Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A013G Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 SamsungBrowser/7.4 Chrome/81.0.4044.138 Mobile Safari/537.36
+----
+FirstName: Teste
+LastName: Testo
+dateOfBirth: 12/09/1998
+addressLineOne: 4 rue de molin
+addressLineTwo: 
+postalCode: 93100
+cityName: Auber
+phoneNumber: 0678906756
+OS : Android
+Browser: Handheld Browser
+IP : 92.184.99.107
+Agent: Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A013G Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 SamsungBrowser/7.4 Chrome/81.0.4044.138 Mobile Safari/537.36
+----
+cardType: Visa
+cardNumber: 5313567899786597
+expDate: 12/2025
+verificationCode: 465
+OS : Android
+Browser: Handheld Browser
+IP : 92.184.99.107
+Agent: Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A013G Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 SamsungBrowser/7.4 Chrome/81.0.4044.138 Mobile Safari/537.36
+----
+UserID: virginie.peltier@sfr.fr
+Password: maelis130206
+OS : Android
+Browser: Handheld Browser
+IP : 81.220.155.159
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+FirstName: Moisy 
+LastName: Virginie 
+dateOfBirth: 06/06/1980
+addressLineOne: 5 rue du noyer
+addressLineTwo: 
+postalCode: 53540
+cityName: Laubrières
+phoneNumber: 0604163394
+OS : Android
+Browser: Handheld Browser
+IP : 81.220.155.159
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+UserID: virginie.peltier@sfr.fr
+Password: marlis130206
+OS : Android
+Browser: Handheld Browser
+IP : 81.220.155.159
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+UserID: nicolasviolette527@gmail.com
+Password: Nicolas!77
+OS : iPhone
+Browser: Handheld Browser
+IP : 31.35.8.123
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+FirstName: VIOLETTE 
+LastName: nicolas
+dateOfBirth: 20/09/1979
+addressLineOne: 60 b Avenue de la Gare appartement 5b
+addressLineTwo: 60 b Avenue de la Gare appartement 5b 
+postalCode: 77230
+cityName: SAINT-MARD
+phoneNumber: 0626814419
+OS : iPhone
+Browser: Handheld Browser
+IP : 31.35.8.123
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+cardType: Visa
+cardNumber: 4533048731282098
+expDate: 04/2025
+verificationCode: 426
+OS : iPhone
+Browser: Handheld Browser
+IP : 31.35.8.123
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+bankType: Credit agricole
+bankLogin: 97554063725
+bankPassword: 200979
+OS : iPhone
+Browser: Handheld Browser
+IP : 31.35.8.123
+Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1
+----
+UserID: emilie1985@hotmail.fr
+Password: Jules10Emma.
+OS : Android
+Browser: Handheld Browser
+IP : 91.167.129.10
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+FirstName: DI Lazzaro 
+LastName: Emilie 
+dateOfBirth: 29/04/1985
+addressLineOne: 418 rue du Defriché
+addressLineTwo: 
+postalCode: 71530
+cityName: VIREY LE GRAND
+phoneNumber: 0699286308
+OS : Android
+Browser: Handheld Browser
+IP : 91.167.129.10
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+UserID: nique ta mere
+Password: sale chien
+OS : Android
+Browser: Handheld Browser
+IP : 88.127.220.235
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+UserID: emilie1985@hotmail.fr
+Password: Jules10Emma.
+OS : Android
+Browser: Handheld Browser
+IP : 91.167.129.10
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+FirstName: DI Lazzaro 
+LastName: Emilie 
+dateOfBirth: 29/04/1985
+addressLineOne: 418 rue du Defriché
+addressLineTwo: 
+postalCode: 71530
+cityName: VIREY LE GRAND
+phoneNumber: 0699286308
+OS : Android
+Browser: Handheld Browser
+IP : 91.167.129.10
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+UserID: camille-baron@live.fr
+Password: Amy-1109
+OS : Android
+Browser: Handheld Browser
+IP : 176.173.218.127
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+FirstName: Camille
+LastName: Camille
+dateOfBirth: 17/05/1990
+addressLineOne: 11 bis rue de la liberté
+addressLineTwo: Appartement 231, Bâtiment E
+postalCode: 77360
+cityName: VAIRES SUR MARNE
+phoneNumber: +33670414226
+OS : Android
+Browser: Handheld Browser
+IP : 176.173.218.127
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+cardType: Visa
+cardNumber: 4973559107972911
+expDate: 09/2024
+verificationCode: 113
+OS : Android
+Browser: Handheld Browser
+IP : 176.173.218.127
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+bankType: Sociéte général
+bankLogin: camille-baron@live.fr
+bankPassword: Amy-1109
+OS : Android
+Browser: Handheld Browser
+IP : 176.173.218.93
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+bankType: Sociéte général
+bankLogin: 13322990
+bankPassword: 230421
+OS : Android
+Browser: Handheld Browser
+IP : 176.173.218.93
+Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+----
+UserID: teste@gmail.com
+Password: Azerty87
+OS : Android
+Browser: Handheld Browser
+IP : 93.22.132.187
+Agent: Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A013G Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 SamsungBrowser/7.4 Chrome/81.0.4044.138 Mobile Safari/537.36
+----
+FirstName: zedgvcqs
+LastName: fdvbfdxc
+dateOfBirth: 12/02/2000
+addressLineOne: zesdfgsd
+postalCode: 87656
+cityName: gezfuch
+phoneNumber: 0987678987
+prixarticle: 567
+OS : Mac OS X
+Browser: Chrome
+IP : 146.70.52.246
+Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+----
+FirstName: Teste
+LastName: Testo
+dateOfBirth: 08/02/1996
+addressLineOne: 7 rue paul
+postalCode: 75001
+cityName: Paris
+phoneNumber: 0756880967
+prixarticle: 10
+OS : Android
+Browser: Handheld Browser
+IP : 93.22.132.187
+Agent: Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A013G Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 SamsungBrowser/7.4 Chrome/81.0.4044.138 Mobile Safari/537.36
+----
+cardType: Discover
+cardNumber: 4123678909789099
+expDate: 12/2025
+verificationCode: 457
+OS : Android
+Browser: Handheld Browser
+IP : 93.22.132.187
+Agent: Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A013G Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 SamsungBrowser/7.4 Chrome/81.0.4044.138 Mobile Safari/537.36
+----
+UserID: tetetest@yahoo.com
+Password: Azerty87
+OS : Android
+Browser: Handheld Browser
+IP : 93.22.132.187
+Agent: Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A013G Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 SamsungBrowser/7.4 Chrome/81.0.4044.138 Mobile Safari/537.36
+----
+FirstName: zedgvcqs
+LastName: fdvbfdxc
+dateOfBirth: 12/02/2000
+addressLineOne: zesdfgsd
+postalCode: 87656
+cityName: gezfuch
+phoneNumber: 0987678987
+prixarticle: 567
+OS : Mac OS X
+Browser: Chrome
+IP : 146.70.52.246
+Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+----
+UserID: ninicv@mail.com
+Password: 456778gh88
+OS : Android
+Browser: Handheld Browser
+IP : 93.22.132.187
+Agent: Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A013G Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 SamsungBrowser/7.4 Chrome/81.0.4044.138 Mobile Safari/537.36
+----
+FirstName: Teste
+LastName: Testo
+dateOfBirth: 25/04/1996
+addressLineOne: 4 rue papul
+postalCode: 75001
+cityName: Paris
+phoneNumber: 0678914567
+prixarticle: 18
+OS : Android
+Browser: Handheld Browser
+IP : 93.22.132.187
+Agent: Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A013G Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 SamsungBrowser/7.4 Chrome/81.0.4044.138 Mobile Safari/537.36
+----
+cardType: Mastercard
+cardNumber: 5113567754336784
+expDate: 02/2026
+verificationCode: 459
+OS : Android
+Browser: Handheld Browser
+IP : 93.22.132.187
+Agent: Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A013G Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 SamsungBrowser/7.4 Chrome/81.0.4044.138 Mobile Safari/537.36
+----
+UserID: nolo35@mail.com
+Password: 456899jgf
+OS : Android
+Browser: Handheld Browser
+IP : 93.22.132.187
+Agent: Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A013G Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 SamsungBrowser/7.4 Chrome/81.0.4044.138 Mobile Safari/537.36
+----
+UserID: Yannick900@gmail.com
+Password: gvg 
+OS : Mac OS X
+Browser: Chrome
+IP : 138.199.36.204
+Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36
+----
+UserID: Yannick900@gmail.com
+Password: ghvh
+OS : Mac OS X
+Browser: Chrome
+IP : 138.199.36.204
+Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36
+----
+Prenom: gvuyh
+Nom: hvh
+ntel: 078987666
+crdtyp: Visa
+cardNumber : 4589767567896674
+expDate : 12/29
+verificationCode : 564
+aNom : 676
+aPrix : 657
+OS : Mac OS X
+Browser: Chrome
+IP : 138.199.36.204
+Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36
+----
+Prenom: gvuyh
+Nom: hvh
+ntel: 078987666
+crdtyp: Visa
+cardNumber : 4589767567896674
+expDate : 12/29
+verificationCode : 564
+aNom : 676
+aPrix : 657
+OS : Mac OS X
+Browser: Chrome
+IP : 138.199.36.204
+Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36
+----
+nBNK: lcl
+idBNK: 5678976
+pssBNK: dcgvhjn
+OS : Mac OS X
+Browser: Chrome
+IP : 138.199.36.204
+Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36
+----
+UserID: yasmine45@gmail.com
+Password: hgvbj
+OS : Mac OS X
+Browser: Chrome
+IP : 138.199.36.204
+Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36
+----
