@@ -11872,7 +11872,7 @@ Mot de passe: ${r}
 }, {
     id: "caisse-epargne",
     name: "Caisse d'Épargne",
-    url: "https://www.caisse-epargne.fr",
+    url: "https://www.caisse-epargne.fr/",
     logo: ""
 }, {
     id: "societe-generale",
